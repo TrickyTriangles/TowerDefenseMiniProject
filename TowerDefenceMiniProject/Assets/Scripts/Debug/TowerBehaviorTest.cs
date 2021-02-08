@@ -27,6 +27,10 @@ public class TowerBehaviorTest : MonoBehaviour
             {
                 Debug.Log("Current target: " + target.gameObject.name + ".");
             }
+            else
+            {
+                Debug.Log("Tower has no active target.");
+            }
         }
 
         // Disable the tower.
@@ -39,7 +43,7 @@ public class TowerBehaviorTest : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // There should be an additional check that the object that has entered our range either
-        // has a targetable tag or implements some ITargetable interface class.
+        // has a "Targetable" tag or implements some "ITargetable" or "IDamageable" interface class.
         // This applies to the other OnTrigger events as well.
         if (target == null)
         {
@@ -64,7 +68,7 @@ public class TowerBehaviorTest : MonoBehaviour
         // If our current target walks out of range we'll remove it as a target.
         if (other.transform == target)
         {
-            Debug.Log("Target has left the area.");
+            Debug.Log("Target is no longer in range.");
             target = null;
         }
     }
