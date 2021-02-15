@@ -20,19 +20,6 @@ public class TowerBehaviorTest : MonoBehaviour
 
     private void Update()
     {
-        // Get a readout of our current target, if we have one.
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (target != null)
-            {
-                Debug.Log("Current target: " + target.gameObject.name + ".");
-            }
-            else
-            {
-                Debug.Log("Tower has no active target.");
-            }
-        }
-
         // Disable the tower.
         if (Input.GetKeyDown(KeyCode.Q))
         {

@@ -61,7 +61,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KayKit Animated Character|Attack(1h)
+  m_Name: Attack(1h)
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -88,7 +88,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KayKit Animated Character|Shooting(1h)
+  m_Name: Shoot(1h)
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -145,7 +145,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5993140742748433280}
-    m_Position: {x: 30, y: 200, z: 0}
+    m_Position: {x: 40, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3272217827034597625}
     m_Position: {x: 270, y: 150, z: 0}
@@ -157,19 +157,19 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1347786616209278259}
-    m_Position: {x: 40, y: 280, z: 0}
+    m_Position: {x: 80, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5683564660362250432}
-    m_Position: {x: -40, y: 420, z: 0}
+    m_Position: {x: -170, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 311517135082738210}
-    m_Position: {x: 70, y: 550, z: 0}
+    m_Position: {x: -170, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8593667923119543949}
-    m_Position: {x: -130, y: 350, z: 0}
+    m_Position: {x: 30, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8376041089666557732}
-    m_Position: {x: 160, y: 360, z: 0}
+    m_Position: {x: -170, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5689329193356021708}
     m_Position: {x: 500, y: 370, z: 0}
@@ -178,7 +178,7 @@ AnimatorStateMachine:
     m_Position: {x: 560, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7010381207765753758}
-    m_Position: {x: 300, y: 570, z: 0}
+    m_Position: {x: -170, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6537494139952835106}
     m_Position: {x: 560, y: 230, z: 0}
@@ -187,13 +187,13 @@ AnimatorStateMachine:
     m_Position: {x: 510, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5795110877231824819}
-    m_Position: {x: 600, y: 420, z: 0}
+    m_Position: {x: -380, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1244821091493389416}
     m_Position: {x: 130, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8784236084885285062}
-    m_Position: {x: 240, y: 80, z: 0}
+    m_Position: {x: 270, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3976335941630528853}
     m_Position: {x: 372, y: 495, z: 0}
@@ -202,11 +202,11 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 40, y: 90, z: 0}
+  m_AnyStatePosition: {x: 100, y: -50, z: 0}
+  m_EntryPosition: {x: -150, y: 0, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 7010381207765753758}
+  m_DefaultState: {fileID: 8376041089666557732}
 --- !u!1102 &-3763464707521486775
 AnimatorState:
   serializedVersion: 5
@@ -344,7 +344,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KayKit Animated Character|HeavyAttack
+  m_Name: HeavyAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -479,7 +479,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KayKit Animated Character|Defeat
+  m_Name: Defeat
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -506,7 +506,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KayKit Animated Character|Run
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -533,7 +533,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KayKit Animated Character|Idle
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
