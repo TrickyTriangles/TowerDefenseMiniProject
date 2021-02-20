@@ -9,7 +9,7 @@ public class Chest : Entity, IDamageable
 
     void IDamageable.Damage(DamageProfile damage_profile)
     {
-        enviro_text.CreateNewEnvironmentText("Hit!");
+        enviro_text.CreateNewEnvironmentText(damage_profile.fired_by.name + " hit me!");
 
         if (coin != null)
         {

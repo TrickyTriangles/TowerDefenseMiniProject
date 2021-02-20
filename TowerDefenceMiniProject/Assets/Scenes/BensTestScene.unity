@@ -340,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &611781388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enviro_text: {fileID: 1908957989}
-  coin: {fileID: 0}
+  coin: {fileID: 9105207213647879014, guid: 7676adee6338b874eb081c117ae627ad, type: 3}
 --- !u!114 &611781389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11021,7 +11021,7 @@ PrefabInstance:
     - target: {fileID: 7177750148598755583, guid: 773f5fff0433b7f4a9760e316c68d7cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7554697216633088581, guid: 773f5fff0433b7f4a9760e316c68d7cc,
         type: 3}
