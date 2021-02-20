@@ -10,11 +10,10 @@ public class TowerProjectile : MonoBehaviour
     private DamageProfile damage_profile;
     private Transform target;
     private Vector3 offset;
-    private Mob mob;
+    private Entity entity;
 
-    private void Mob_OnDeath(object sender, EventArgs e)
+    private void Entity_OnDeath(object sender, EventArgs e)
     {
-        Debug.Log("Tower projectile has received OnDeath event!");
         Destroy(gameObject);
     }
 
@@ -31,8 +30,7 @@ public class TowerProjectile : MonoBehaviour
             return;
         }
 
-        Vector3 direction_to_target = ((target.position + offset) - transform.position).normalized;
-        transform.Translate(direction_to_target * velocity * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.position + offset, velocity * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,23 +41,24 @@ public class TowerProjectile : MonoBehaviour
 
             if (damageable != null)
             {
-                if (mob != null)
-                    mob.OnDeath -= Mob_OnDeath;
+                if (entity != null)
+                    entity.OnDeath -= Entity_OnDeath;
 
                 damageable.Damage(damage_profile);
-                Destroy(gameObject);
             }
+
+            Destroy(gameObject);
         }
     }
 
     public void SetTarget(Transform new_target)
     {
         target = new_target;
-        mob = target.gameObject.GetComponent<Mob>();
+        entity = target.gameObject.GetComponent<Entity>();
 
-        if (mob != null)
+        if (entity != null)
         {
-            mob.OnDeath += Mob_OnDeath;
+            entity.OnDeath += Entity_OnDeath;
         }
     }
 

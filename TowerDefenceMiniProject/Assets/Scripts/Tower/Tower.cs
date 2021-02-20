@@ -13,13 +13,12 @@ public class Tower : MonoBehaviour
     [SerializeField] private ParticleSystem firing_particle_system;
 
     private Transform target;
-    [SerializeField] private int level;
+    [SerializeField] [Range(1, 10)] private int level;
     private float current_shot_delay;
     private bool is_active = true;
 
-    private void Mob_OnDeath(object sender, EventArgs e)
+    private void Entity_OnDeath(object sender, EventArgs e)
     {
-        Debug.Log("Tower class has received OnDeath event!");
         target = null;
     }
 
@@ -145,15 +144,15 @@ public class Tower : MonoBehaviour
 
     private IEnumerator TrackTargetRoutine()
     {
-        Mob mob = target.gameObject.GetComponent<Mob>();
-        mob.OnDeath += Mob_OnDeath;
+        Entity entity = target.gameObject.GetComponent<Entity>();
+        entity.OnDeath += Entity_OnDeath;
 
         while (target != null)
         {
             yield return null;
         }
 
-        mob.OnDeath -= Mob_OnDeath;
+        entity.OnDeath -= Entity_OnDeath;
     }
 }
 

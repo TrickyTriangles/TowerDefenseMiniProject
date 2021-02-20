@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Mob : MonoBehaviour, IDamageable
+public class Mob : Entity, IDamageable
 {
     [SerializeField] private MobProfile mob_profile;
     [SerializeField] private EnvironmentText enviro_text;
@@ -12,7 +12,6 @@ public class Mob : MonoBehaviour, IDamageable
     [SerializeField] private Rigidbody rb;
     [SerializeField] private CapsuleCollider hitbox;
 
-    public event EventHandler OnDeath;
     private Transform target;
     private bool is_active;
     private int health;
@@ -29,37 +28,24 @@ public class Mob : MonoBehaviour, IDamageable
 
     void IDamageable.Damage(DamageProfile damage_profile)
     {
-        health -= damage_profile.base_damage;
-        enviro_text.CreateNewEnvironmentText(damage_profile.base_damage.ToString());
+        int damage_result = DamageCalculator.CalculateDamage(damage_profile, mob_profile);
+
+        health -= damage_result;
+        enviro_text.CreateNewEnvironmentText(damage_result.ToString());
 
         if (health <= 0 && is_active)
         {
-            OnDeath?.Invoke(this, EventArgs.Empty);
-            //RemoveAsTarget(damage_profile);
-            is_active = false;
-
-            StopAllCoroutines();
-            StartCoroutine(DeathAnimationRoutine());
+            KillMob();
         }
     }
 
-    private void RemoveAsTarget(DamageProfile damage_profile)
+    private void KillMob()
     {
-        if (damage_profile.fired_by != null)
-        {
-            if (damage_profile.fired_by.CompareTag("Tower"))
-            {
-                Tower tower = damage_profile.fired_by.GetComponent<Tower>();
-                tower.LoseTarget();
-                return;
-            }
-            else if (damage_profile.fired_by.CompareTag("Hero"))
-            {
-                Hero hero = damage_profile.fired_by.GetComponent<Hero>();
-                hero.LoseTarget();
-                return;
-            }
-        }
+        is_active = false;
+
+        InvokeOnDeath();
+        StopAllCoroutines();
+        StartCoroutine(DeathAnimationRoutine());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,6 +121,13 @@ public class MobProfile : ScriptableObject
     public int base_health;
     public AnimationCurve base_power;
     public float velocity;
+    [Range(0, 1)] public float normal_damage_resistance;
+    [Range(0, 1)] public float slow_damage_resistance;
+    [Range(0, 1)] public float slow_chance_resist;
+    [Range(0, 1)] public float freeze_damage_resistance;
+    [Range(0, 1)] public float freeze_chance_resist;
+    [Range(0, 1)] public float burn_damage_resistance;
+    [Range(0, 1)] public float burn_chance_resist;
 
     public DamageProfile GetDamageProfile()
     {

@@ -13,26 +13,14 @@ public class Hero : MonoBehaviour, IDamageable
     [SerializeField] private int level;
     private Transform target;
 
-    private void Mob_OnDeath(object sender, EventArgs e)
+    private void Entity_OnDeath(object sender, EventArgs e)
     {
-        Debug.Log("Hero class has received OnDeath event!");
         target = null;
     }
 
     public void LoseTarget()
     {
         target = null;
-    }
-
-    private DamageProfile GetDamageProfile()
-    {
-        DamageProfile new_profile = new DamageProfile();
-
-        new_profile.fired_by = gameObject;
-        new_profile.damage_type = hero_profile.damage_type;
-        new_profile.base_damage = (int)hero_profile.shot_power.Evaluate(level);
-
-        return new_profile;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,6 +47,17 @@ public class Hero : MonoBehaviour, IDamageable
         {
             target = null;
         }
+    }
+
+    private DamageProfile GetDamageProfile()
+    {
+        DamageProfile new_profile = new DamageProfile();
+
+        new_profile.fired_by = gameObject;
+        new_profile.damage_type = hero_profile.damage_type;
+        new_profile.base_damage = (int)hero_profile.shot_power.Evaluate(level);
+
+        return new_profile;
     }
 
     private void SetAttackingAnimation()
@@ -92,12 +91,12 @@ public class Hero : MonoBehaviour, IDamageable
 
     private IEnumerator AttackTargetRoutine()
     {
-        Mob mob = target.GetComponent<Mob>();
+        Entity entity = target.GetComponent<Entity>();
         IDamageable damageable = target.GetComponent<IDamageable>();
         float timer = 0f;
 
         SetAttackingAnimation();
-        if (mob != null) { mob.OnDeath += Mob_OnDeath; }
+        if (entity != null) { entity.OnDeath += Entity_OnDeath; }
 
         while (target != null)
         {
@@ -114,7 +113,7 @@ public class Hero : MonoBehaviour, IDamageable
             yield return null;
         }
 
-        if (mob != null) { mob.OnDeath -= Mob_OnDeath; }
+        if (entity != null) { entity.OnDeath -= Entity_OnDeath; }
         animator.Play("Idle");
     }
 }
