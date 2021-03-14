@@ -34,53 +34,6 @@ Transform:
   m_Father: {fileID: 6548552697535593731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.000008018604, y: -3.357247, z: 0.0000007016094}
---- !u!1 &241756937197850568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 241756937197850575}
-  - component: {fileID: 241756937197850574}
-  m_Layer: 0
-  m_Name: PointToScreenTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &241756937197850575
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241756937197850568}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.72, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1093695955711637096}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &241756937197850574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241756937197850568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88219cc6b1fbb540aac7453b5bf9c4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text_prefab: {fileID: 2367819771738813290, guid: 6b462e9a0171ce84a9330cb8d27d255f,
-    type: 3}
-  canvas: {fileID: 0}
-  _camera: {fileID: 0}
 --- !u!1 &317017797354417362
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +66,6 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 6548552697535593731}
-  - {fileID: 241756937197850575}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -182,7 +134,7 @@ MonoBehaviour:
   animator: {fileID: 7458474335708582312}
   model: {fileID: 6548552697535593731}
   health: 100
-  enviro_text: {fileID: 241756937197850574}
+  enviro_text: {fileID: 0}
   level: 1
 --- !u!1 &656252602588964997
 GameObject:

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Chest : Entity, IDamageable
 {
-    [SerializeField] private EnvironmentText enviro_text;
     [SerializeField] private GameObject coin;
 
     void IDamageable.Damage(DamageProfile damage_profile)
     {
-        enviro_text.CreateNewEnvironmentText(damage_profile.fired_by.name + " hit me!");
+        EnvironmentText.Instance.DrawText(damage_profile.fired_by.name + " hit me!", EnvironmentText.TextTypes.SLOW, transform.position);
 
         if (coin != null)
         {
