@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: SkeletonLevel1
+  m_Name: Bomb
   m_EditorClassIdentifier: Assembly-CSharp::MobProfile
   damage_type: 0
-  base_health: 500000
+  base_health: 20
   base_power:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      value: 0
+      inSlope: 5
+      outSlope: 5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 3
-      inSlope: 2
-      outSlope: 2
+      value: 5
+      inSlope: 5
+      outSlope: 5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -38,11 +38,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  velocity: 0
+  experience: 11
+  velocity: 1
   normal_damage_resistance: 0
-  slow_damage_resistance: 0
+  slow_damage_resistance: 0.3
   slow_chance_resist: 0
-  freeze_damage_resistance: 0
+  freeze_damage_resistance: 0.3
   freeze_chance_resist: 0
   burn_damage_resistance: 0
-  burn_chance_resist: 0
+  burn_chance_resist: 1

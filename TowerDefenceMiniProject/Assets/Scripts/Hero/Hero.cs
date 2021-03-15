@@ -9,13 +9,40 @@ public class Hero : MonoBehaviour, IDamageable
     [SerializeField] private Animator animator;
     [SerializeField] private Transform model;
     [SerializeField] private int health;
-    [SerializeField] private EnvironmentText enviro_text;
     [SerializeField] private int level;
     private Transform target;
+    private GameManager.HeroKilledMobEvent killed_mob_event;
+    private Action<Hero, int> hero_gained_experience_event;
+
+    public int Level
+    {
+        get { return level; }
+        set { level = value; }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartupRoutine());
+    }
 
     private void Entity_OnDeath(object sender, EventArgs e)
     {
         target = null;
+
+        var onDeathEventArgs = e as Entity.OnDeathEventArgs;
+
+        if (onDeathEventArgs.last_hit.fired_by != null)
+        {
+            Hero hero = onDeathEventArgs.last_hit.fired_by.GetComponent<Hero>();
+
+            if (hero != null)
+            {               
+                if (sender is Mob mob)
+                {
+                    killed_mob_event?.Invoke(mob._experience, hero);
+                }
+            }
+        }
     }
 
     public void LoseTarget()
@@ -83,10 +110,22 @@ public class Hero : MonoBehaviour, IDamageable
 
     void IDamageable.Damage(DamageProfile damage_profile)
     {
-        if (enviro_text != null)
+        if (EnvironmentText.IsInitialized)
         {
-            enviro_text.CreateNewEnvironmentText(damage_profile.base_damage.ToString());
+            EnvironmentText.Instance.DrawText(damage_profile.base_damage.ToString(), EnvironmentText.TextTypes.NORMAL, transform.position);
         }
+    }
+
+    private IEnumerator StartupRoutine()
+    {
+        // Wait for GameManager class to be initialized before using it.
+        while (GameManager.Instance.HeroKilledMob == null)
+        {
+            yield return null;
+        }
+
+        killed_mob_event += GameManager.Instance.HeroKilledMob;
+        hero_gained_experience_event += GameManager.Instance.HeroGainedExperienceEvent;
     }
 
     private IEnumerator AttackTargetRoutine()
@@ -106,7 +145,12 @@ public class Hero : MonoBehaviour, IDamageable
 
             if (timer >= info.length)
             {
-                if (damageable != null) { damageable.Damage(GetDamageProfile()); }
+                if (damageable != null)
+                {
+                    damageable.Damage(GetDamageProfile());
+                    hero_gained_experience_event?.Invoke(this, 1);
+                }
+
                 timer -= info.length;
             }
 

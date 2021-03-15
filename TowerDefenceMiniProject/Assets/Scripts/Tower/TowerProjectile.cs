@@ -82,5 +82,5 @@ public struct DamageProfile
     public GameObject fired_by;
     public DamageType damage_type;
     public int base_damage;
-    public int damage_modifier;
+    public float damage_modifier;
 }

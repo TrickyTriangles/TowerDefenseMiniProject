@@ -7,6 +7,7 @@ TagManager:
   - Targetable
   - Hero
   - Tower
+  - Coin
   layers:
   - Default
   - TransparentFX
