@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class TileData : MonoBehaviour
 {
-
     [SerializeField] TileData[] neighbors;
+    public TileData PathFrom { get; set; }
+    public int SearchHeuristic { get; set; }
 
+    public TileData NextWithSamePriority { get; set; }
+
+    public int SearchPhase { get; set; }
+
+    int distance;
+    public int Distance { get { return distance; } set { distance = value; } }
+    public int SearchPriority { get { return distance + SearchHeuristic; } }
+
+    //public HexUnit Unit { get; set; }
 
     public TileData GetNeighbor(TileDirection direction) //references enum
     {
