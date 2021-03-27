@@ -19,6 +19,11 @@ public class HeroExperienceManager : MonoBehaviour
         return experience_per_level.Length;
     }
 
+    public int GetTargetExperienceForCurrentLevel(int current_level)
+    {
+        return experience_per_level[current_level - 1];
+    }
+
     public int GetTargetExperienceForNextLevel(int current_level)
     {
         if (current_level < experience_per_level.Length)

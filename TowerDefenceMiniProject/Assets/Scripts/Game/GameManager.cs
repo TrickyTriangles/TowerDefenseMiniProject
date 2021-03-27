@@ -6,7 +6,7 @@ using System;
 public class GameManager : Singleton<GameManager>
 {
     public delegate void UpdateUIOnCoinCollected(int new_value);
-    public delegate void UpdateUIOnExperienceChange(int new_value, int target_value, int level);
+    public delegate void UpdateUIOnExperienceChange(int new_value, int target_value, int level, int current_level_target_xp);
     public delegate void HeroKilledMobEvent(int mob_exp_value, Hero hero);
 
     [SerializeField] private HeroExperienceManager hero_experience_manager;
@@ -63,10 +63,11 @@ public class GameManager : Singleton<GameManager>
 
         int current_level = hero_experience_manager.EvaluateLevel(experience_total);
         int target_xp = hero_experience_manager.GetTargetExperienceForNextLevel(current_level);
+        int current_level_target_xp = hero_experience_manager.GetTargetExperienceForCurrentLevel(current_level);
 
         if (current_level != hero.Level) { hero.Level = current_level; }
 
-        update_ui_on_experience_change_delegate?.Invoke(experience_total, target_xp, current_level);
+        update_ui_on_experience_change_delegate?.Invoke(experience_total, target_xp, current_level, current_level_target_xp);
     }
 
     private void Coin_OnCollected(object sender, int value)
