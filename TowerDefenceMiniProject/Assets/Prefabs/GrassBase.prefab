@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 891909286008142658}
   - component: {fileID: 858511565393910959}
   - component: {fileID: 858511564957660812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrassBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 387241448980156287}
   - component: {fileID: 7997917370453221515}
   - component: {fileID: 2120875191610534416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
