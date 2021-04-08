@@ -5477,7 +5477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3834ed759b981d84994003c10bd9928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower_profile: {fileID: 11400000, guid: 307c3262d363e444bb355b35ac3efb4d, type: 2}
+  tower_profile: {fileID: 11400000, guid: f3834d0ff95d05248ace5a514a734373, type: 2}
   range_collider: {fileID: 7120474543294260625}
   action_point: {fileID: 5072831568678866206}
   firing_object_transform: {fileID: 4750426871287861161}

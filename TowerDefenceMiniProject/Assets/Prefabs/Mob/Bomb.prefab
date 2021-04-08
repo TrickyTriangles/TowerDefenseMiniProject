@@ -5027,7 +5027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36ef89c7ddb8474dbc6cff605b0e415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mob_profile: {fileID: 11400000, guid: dfe996acc92f48042aaf9c1574b6285f, type: 2}
+  mob_profile: {fileID: 11400000, guid: 073c988e7b2012346a85a7944ec8659f, type: 2}
   animator: {fileID: 5684857087346682716}
   model: {fileID: 8323875289778538487}
   rb: {fileID: 5665319665750998701}

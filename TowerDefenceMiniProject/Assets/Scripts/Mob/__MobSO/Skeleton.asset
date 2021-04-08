@@ -9,28 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 5278c1682dfe3c44ba2d5d6827d2ecf7, type: 3}
   m_Name: Skeleton
-  m_EditorClassIdentifier: Assembly-CSharp::MobProfile
+  m_EditorClassIdentifier: 
   damage_type: 0
-  base_health: 20
+  base_health: 10
   base_power:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 5
-      outSlope: 5
+      time: 1
+      value: 3
+      inSlope: 2
+      outSlope: 2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
+      time: 2
       value: 5
-      inSlope: 5
-      outSlope: 5
+      inSlope: 2
+      outSlope: 2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   experience: 3
-  velocity: 50
+  velocity: 1
   normal_damage_resistance: 0
   slow_damage_resistance: 0
   slow_chance_resist: 0

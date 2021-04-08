@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3834ed759b981d84994003c10bd9928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower_profile: {fileID: 11400000, guid: 3b472b626fe92964299dc512b043c9d9, type: 2}
+  tower_profile: {fileID: 11400000, guid: 8666472e6e611934ea9666beaf714dc1, type: 2}
   range_collider: {fileID: 7221185063376347017}
   action_point: {fileID: 9205980188124040080}
   firing_object_transform: {fileID: 8667335030604974375}

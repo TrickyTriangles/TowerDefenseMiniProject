@@ -5477,7 +5477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3834ed759b981d84994003c10bd9928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower_profile: {fileID: 11400000, guid: 60cf9073a7976a6499ff3242a103ee8c, type: 2}
+  tower_profile: {fileID: 11400000, guid: 53d2db5ca3f670f4b8fcc502b0574e61, type: 2}
   range_collider: {fileID: 3180367984709624645}
   action_point: {fileID: 5869193709097397545}
   firing_object_transform: {fileID: 6267086434455105438}
@@ -5518,7 +5518,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.5
+  m_Radius: 1
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

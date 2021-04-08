@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3834ed759b981d84994003c10bd9928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower_profile: {fileID: 11400000, guid: 46a5308f556519e4ea8f4ea576592051, type: 2}
+  tower_profile: {fileID: 11400000, guid: ff4d677f5033f5f4e83df66b7743dc0c, type: 2}
   range_collider: {fileID: 4187428654734088466}
   action_point: {fileID: 1746056152034001409}
   firing_object_transform: {fileID: 2283753463612948662}
