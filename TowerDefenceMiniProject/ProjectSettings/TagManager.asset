@@ -8,6 +8,7 @@ TagManager:
   - Hero
   - Tower
   - Coin
+  - Road
   layers:
   - Default
   - TransparentFX

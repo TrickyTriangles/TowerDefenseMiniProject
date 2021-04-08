@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Measurements
 {
-    public const int mapX = 6;
-    public const int mapZ = 4;
+    public const int mapX = 30;
+    public const int mapZ = 32;
 
 }

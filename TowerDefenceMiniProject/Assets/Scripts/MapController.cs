@@ -176,25 +176,11 @@ public class MapController : MonoBehaviour
                 TileData neighbor = current.GetNeighbor(d);
 
                 if (neighbor == null || neighbor.SearchPhase > searchFrontierPhase) { continue; }
-                //if (neighbor.IsUnderwater || neighbor.Unit) { continue; }
 
-                //HexEdgeType edgeType = current.GetEdgeType(neighbor);
+                int moveCost;
+                if (current.gameObject.tag == "Road") { moveCost = 3; }
+                else { moveCost = 5; }
 
-                //if (edgeType == HexEdgeType.Cliff) { continue; }
-
-                //int distance = current.Distance;
-                int moveCost = 5;
-
-                //if (current.HasRoadThroughEdge(d)) { moveCost = 1; }
-
-                //else if (current.Walled != neighbor.Walled) { continue; }
-                //if same elevation 5, else 10
-                /*
-                else
-                {
-                    moveCost = edgeType == HexEdgeType.Flat ? 5 : 10;
-                    moveCost += neighbor.UrbanLevel + neighbor.FarmLevel + neighbor.PlantLevel;
-                }*/
 
                 int distance = current.Distance + moveCost; // remove later, switch to subtract
  
