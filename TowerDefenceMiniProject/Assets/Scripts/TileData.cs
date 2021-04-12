@@ -16,6 +16,12 @@ public class TileData : MonoBehaviour
     public int Distance { get { return distance; } set { distance = value; } }
     public int SearchPriority { get { return distance + SearchHeuristic; } }
 
+    private Tower tower;
+    public bool HasTower
+    {
+        get { return tower != null; }
+    }
+
     //public HexUnit Unit { get; set; }
 
     public TileData GetNeighbor(TileDirection direction) //references enum
@@ -29,4 +35,18 @@ public class TileData : MonoBehaviour
         tile.neighbors[(int)direction.Opposite()] = this; // set self as opposite of neighbor
     }
 
+    public void SetTower(GameObject new_tower)
+    {
+        if (HasTower)
+        {
+            Destroy(tower.gameObject);
+        }
+
+        tower = Instantiate(new_tower, transform.position + new Vector3(0f, 0.2f), Quaternion.identity).GetComponent<Tower>();
+    }
+
+    public Tower GetTower()
+    {
+        return tower;
+    }
 }

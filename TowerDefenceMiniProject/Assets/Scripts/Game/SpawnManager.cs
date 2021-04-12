@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            if (GameManager.IsInitialized)
+            if (GameManager.IsInitialized && bomb_prefab != null)
             {
                 Entity entity = Instantiate(bomb_prefab, spawn_point, Quaternion.identity).GetComponent<Entity>();
                 entity.OnDeath += Entity_OnDeath;
@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            if (GameManager.IsInitialized)
+            if (GameManager.IsInitialized && skeleton_prefab != null)
             {
                 Entity entity = Instantiate(skeleton_prefab, spawn_point, Quaternion.identity).GetComponent<Entity>();
                 entity.OnDeath += Entity_OnDeath;
