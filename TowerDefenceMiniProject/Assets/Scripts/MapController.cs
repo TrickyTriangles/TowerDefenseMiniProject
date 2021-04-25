@@ -175,6 +175,7 @@ public class MapController : MonoBehaviour
                 TileData neighbor = current.GetNeighbor(d);
 
                 if (neighbor == null || neighbor.SearchPhase > searchFrontierPhase) { continue; }
+                if(current.gameObject.tag == "Barrier") { continue; }
 
                 int moveCost;
                 if (current.gameObject.tag == "Road") { moveCost = 3; }
