@@ -18,13 +18,5 @@ public class ObjectMover : MonoBehaviour
         direction.z = Input.GetAxis("Vertical");
 
         transform.Translate(direction * speed * Time.deltaTime);
-
-        // Destroy the object when pressing the enter key.
-        // Trying to test how this affects my tower class's targeting.
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Debug.Log("Object destroyed");
-            Destroy(gameObject);
-        }
     }
 }

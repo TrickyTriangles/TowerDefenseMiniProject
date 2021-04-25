@@ -40,8 +40,6 @@ public class Reticle : MonoBehaviour
                         transform.position = tile_data.transform.position;
                         current_tile = tile_data;
                     }
-
-                    // NEED CHECK TO SEE IF TILE IS OCCUPIED OR UNUSABLE
                 }
                 else
                 {

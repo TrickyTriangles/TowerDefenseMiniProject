@@ -15,6 +15,30 @@ MonoBehaviour:
   damage_type: 2
   projectile_prefab: {fileID: 1270817470721810547, guid: c8d5193e47a91534cbd583faab2533a2,
     type: 3}
+  upgrade_cost:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 14
+      inSlope: 40.333332
+      outSlope: 40.333332
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4
+      value: 135
+      inSlope: 40.333332
+      outSlope: 40.333332
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   tower_range:
     serializedVersion: 2
     m_Curve:

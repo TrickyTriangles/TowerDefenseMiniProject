@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PathfindingMovement : MovementType
 {
-
+    [SerializeField] private Entity entity;
     [SerializeField] private GameObject MoveTo;
     public MapController master;
-
     private TileData Location;
 
 
@@ -35,8 +35,19 @@ public class PathfindingMovement : MovementType
         master.FindPath(master.DetectTile(gameObject),master.DetectTile(MoveTo));
         //coroutine walk path
         Travel(master.GetPath());
+
+        entity.OnDeath += Entity_OnDeath;
     }
 
+    private void Entity_OnDeath(object sender, EventArgs e)
+    {
+        StopAllCoroutines();
+    }
+
+    public void SetTarget(GameObject new_target)
+    {
+        MoveTo = new_target;
+    }
 
     // maybe in a coroutine!?
     void Update()

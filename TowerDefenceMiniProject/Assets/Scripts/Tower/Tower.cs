@@ -17,8 +17,13 @@ public class Tower : MonoBehaviour
     [SerializeField] private MeshRenderer[] tower_meshes;
     [SerializeField] private Transform[] cannon_locations;
 
+    private Coroutine level_up_routine;
     private bool _loaded;
+    private float current_shot_delay;
+    private bool is_active = true;
+    private bool is_paused = false;
     private Transform target;
+
     [SerializeField] [Range(1, MAX_LEVEL)] private int level;
     public int Level
     {
@@ -26,10 +31,50 @@ public class Tower : MonoBehaviour
         set { level = value; if (_loaded) { AdjustLevelDetails(); } }
     }
 
-    private Coroutine level_up_routine;
-    private float current_shot_delay;
-    private bool is_active = true;
-    private bool is_paused = false;
+    public bool IsMaxLevel
+    {
+        get { return level == MAX_LEVEL; }
+    }
+
+    public int UpgradeCost
+    {
+        get { return !IsMaxLevel ? (int)tower_profile.upgrade_cost.Evaluate(level + 1) : 0; }
+    }
+
+    public int BuildCost
+    {
+        get { return (int)tower_profile.upgrade_cost.Evaluate(1); }
+    }
+
+    public int CurrentPower
+    {
+        get { return (int)tower_profile.shot_power.Evaluate(level); }
+    }
+
+    public int NextPower
+    {
+        get { return (int)tower_profile.shot_power.Evaluate(level + 1); }
+    }
+
+    public float CurrentRange
+    {
+        get { return tower_profile.tower_range.Evaluate(level); }
+    }
+
+    public float NextRange
+    {
+        get { return tower_profile.tower_range.Evaluate(level + 1); }
+    }
+
+    public float CurrentDelay
+    {
+        get { return tower_profile.shot_delay.Evaluate(level); }
+    }
+
+    public float NextDelay
+    {
+        get { return tower_profile.shot_delay.Evaluate(level + 1); }
+    }
 
     private void Entity_OnDeath(object sender, EventArgs e)
     {
@@ -192,8 +237,6 @@ public class Tower : MonoBehaviour
 
             yield return null;
         }
-
-        Debug.Log(name + " has deactivated.");
     }
 
     private IEnumerator TrackTargetRoutine()

@@ -64,7 +64,6 @@ public class MapController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 2000f, tileLayer))
         {
             TileData foundTile = hit.collider.gameObject.GetComponent<TileData>();
-            Debug.Log(foundTile);
             return foundTile;
         }
         return null;

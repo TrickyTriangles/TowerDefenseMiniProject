@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TowerSpawnManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class TowerSpawnManager : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Reticle reticle;
     [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private Image money_icon;
+    [SerializeField] private TextMeshProUGUI money_readout;
     [SerializeField] private TowerSpawnSelectionElement[] selection_elements;
     [SerializeField] private Vector2[] selection_ranges;
     [SerializeField] private float deadzone;
@@ -96,10 +99,16 @@ public class TowerSpawnManager : MonoBehaviour
             if (selection > -1 && selection_elements[selection].targeted)
             {
                 description.text = selection_elements[selection].GetDescription();
+                description.color = GameManager.Instance.Gold >= selection_elements[selection].GetBuildCost() ? Color.white : Color.red;
+                money_icon.gameObject.SetActive(true);
+                money_readout.text = selection_elements[selection].GetBuildCost().ToString();
+                money_readout.color = GameManager.Instance.Gold >= selection_elements[selection].GetBuildCost() ? Color.white : Color.red;
             }
             else
             {
                 description.text = "";
+                money_icon.gameObject.SetActive(false);
+                money_readout.text = "";
             }
 
             yield return null;
@@ -107,7 +116,13 @@ public class TowerSpawnManager : MonoBehaviour
 
         if (selection > -1 && selection_elements[selection].targeted)
         {
-            tile.SetTower(selection_elements[selection].GetSelectionObject());
+            int build_cost = selection_elements[selection].GetBuildCost();
+
+            if (GameManager.Instance.Gold >= build_cost && build_cost > -1)
+            {
+                tile.SetTower(selection_elements[selection].GetSelectionObject());
+                GameManager.Instance.RemoveGold(build_cost);
+            }
         }
 
         if (reticle != null) { reticle.UnlockReticle(); }

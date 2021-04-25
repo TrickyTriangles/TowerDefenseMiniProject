@@ -5,11 +5,20 @@ using UnityEngine;
 public class TowerSpawnSelectionElement : MonoBehaviour
 {
     [SerializeField] private GameObject object_to_spawn;
+    private Tower tower;
     [SerializeField] private string description;
     [SerializeField] TowerSpawnManager tower_spawn_manager;
     [HideInInspector] public bool targeted;
     private float distance = 0f;
     private float target_distance = 30f;
+
+    private void Start()
+    {
+        if (object_to_spawn != null)
+        {
+            tower = object_to_spawn.GetComponent<Tower>();
+        }
+    }
 
     public void ResetPosition()
     {
@@ -41,13 +50,25 @@ public class TowerSpawnSelectionElement : MonoBehaviour
         transform.position = tower_spawn_manager.transform.position + new Vector3(Mathf.Cos(angles.z * Mathf.Deg2Rad) * distance, Mathf.Sin(angles.z * Mathf.Deg2Rad) * distance, 0f);
     }
 
+    public GameObject GetSelectionObject()
+    {
+        return object_to_spawn;
+    }
+
     public string GetDescription()
     {
         return description;
     }
 
-    public GameObject GetSelectionObject()
+    public int GetBuildCost()
     {
-        return object_to_spawn;
+        if (tower != null)
+        {
+            return tower.BuildCost;
+        }
+        else
+        {
+            return -1;
+        }
     }
 }

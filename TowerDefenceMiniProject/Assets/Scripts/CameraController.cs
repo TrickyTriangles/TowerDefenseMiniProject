@@ -34,7 +34,6 @@ public class CameraController: MonoBehaviour
         float rotationDelta = Input.GetAxisRaw("Rotation");
         if (Mathf.Abs(rotationDelta) >= 0.1f)
         {
-            Debug.Log(rotationDelta);
             if (rotationDelta > 0) { Mathf.FloorToInt(rotationDelta); }
             if (rotationDelta < 0) { Mathf.CeilToInt(rotationDelta); }
             AdjustRotation(rotationDelta);

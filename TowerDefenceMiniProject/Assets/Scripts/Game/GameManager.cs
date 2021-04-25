@@ -11,7 +11,16 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private HeroExperienceManager hero_experience_manager;
     private int gold_total;
+    public int Gold
+    {
+        get { return gold_total; }
+    }
+
     private int experience_total;
+    public int Experience
+    {
+        get { return experience_total; }
+    }
 
     private CoinCollectDelegate coin_collect_delegate;
     public CoinCollectDelegate CoinCollectDelegate
@@ -73,6 +82,17 @@ public class GameManager : Singleton<GameManager>
     private void Coin_OnCollected(object sender, int value)
     {
         gold_total += value;
+        update_ui_coin_collected_delegate?.Invoke(gold_total);
+    }
+
+    public void AwardGold(int amount)
+    {
+        Coin_OnCollected(this, amount);
+    }
+
+    public void RemoveGold(int amount)
+    {
+        gold_total -= amount;
         update_ui_coin_collected_delegate?.Invoke(gold_total);
     }
 }
