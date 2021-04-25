@@ -61,7 +61,7 @@ public class PathfindingMovement : MovementType
 
     IEnumerator TravelPath()
     {
-        Vector3 a, b, c = pathToTravel[0].transform.localPosition;
+        Vector3 a, b, c = pathToTravel[0].transform.localPosition + new Vector3(0, .25f, 0);
         transform.localPosition = c;
         yield return LookAt(pathToTravel[1].transform.localPosition);
 
@@ -69,8 +69,8 @@ public class PathfindingMovement : MovementType
         for (int i = 1; i < pathToTravel.Count; i++)
         {
             a = c;
-            b = pathToTravel[i - 1].transform.localPosition;
-            c = (b + pathToTravel[i].transform.localPosition) * 0.5f;
+            b = pathToTravel[i - 1].transform.localPosition + new Vector3(0, .25f, 0);
+            c = (b + pathToTravel[i].transform.localPosition + new Vector3(0, .25f, 0)) * 0.5f;
             for (; t < 1f; t += Time.deltaTime * travelSpeed)
             {
                 transform.localPosition = Bezier.GetPoint(a, b, c, t);
@@ -123,22 +123,9 @@ public class PathfindingMovement : MovementType
         orientation = transform.localRotation.eulerAngles.y;
     }
 
-    /*
-     * 
-     * FROM HEXGAMEUI, WUT?
-     * 
-    void DoPathfinding()
+    public void SetTarget(GameObject new_target)
     {
-        if (currentCell && selectedUnit.IsValidDestination(currentCell))
-        {
-            grid.FindPath(selectedUnit.Location, currentCell, 24);
-        }
-        else
-        {
-            grid.ClearPath();
-        }
+        MoveTo = new_target;
     }
-
-    */
 
 }
